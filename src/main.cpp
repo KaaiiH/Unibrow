@@ -1,24 +1,20 @@
-#include <SFML/Graphics.hpp>
-
+#include"GameEngine.h"
+#include<SFML/Graphics.hpp>
+#include<time.h>
+bool exitMain = false;
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-
-    return 0;
+	srand(time(NULL));
+	GameEngine mygame(sf::Vector2u(1000, 800), "Fight For Frank");
+	mygame.setScene(GameEngine::Scene::mainMenu);
+	mygame.initial();
+	mygame.run();
+	mygame.exitMain = &exitMain;
+	std::cout << "every thing works \n";
+	while (!exitMain)
+	{
+		mygame.getAndSetRandom(rand(), false);
+	}
+	std::cout << "exit success\n";
+	return 0;
 }
