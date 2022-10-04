@@ -11,7 +11,7 @@ class GameEngine
 public:
 	enum Scene
 	{
-		mainMenu,controlSetting,pvpMode,highScore,selectCharecter,setPlayerName,setTotalPlayer
+		mainMenu,controlSetting,pvpMode,highScore,selectCharacter,setPlayerName,setTotalPlayer
 	};
 	struct KeyValue{
 		bool joyEnable;
@@ -31,7 +31,7 @@ public:
 	Result runPvpMode(Result result);
 	Result runHighScore(Result result);
 	Result runControlSetting(Result result);
-	Result runSelectCharecter(Result result);
+	Result runSelectCharacter(Result result);
 	Result runSetPlayerName(Result result);
 	Result runSetTotalPlayer(Result result);
 	bool checkMouseCollision(sf::Text *text);

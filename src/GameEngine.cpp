@@ -6,7 +6,7 @@
 #include <iomanip> 
 #include <sstream>
 #include<limits>
-#include"Item.h";
+#include"Item.h"
 #include<time.h>
 
 GameEngine::GameEngine(sf::Vector2u size, std::string title):thread(&GameEngine::runThread,this)
@@ -74,10 +74,10 @@ void GameEngine::runThread() {
 				runControlSetting(Result());
 				break;
 			}
-			case GameEngine::selectCharecter:
+			case GameEngine::selectCharacter:
 			{
 
-				result = runSelectCharecter(result);
+				result = runSelectCharacter(result);
 				if (result.resultString[0] == "pvpMode")
 				{
 						runPvpMode(result);
@@ -93,9 +93,9 @@ void GameEngine::runThread() {
 				{
 					this->setScene(Scene::mainMenu);
 				}
-				else if (result.resultString[0] == "selectCharecter")
+				else if (result.resultString[0] == "selectCharacter")
 				{
-					this->setScene(Scene::selectCharecter);
+					this->setScene(Scene::selectCharacter);
 				}
 				else if (result.resultString[0] == "setTotalPlayer")
 				{
@@ -510,7 +510,7 @@ Result GameEngine::runPvpMode(Result result)
 	{
 		for (int i = 0; i < result.resultInt.size(); i++)
 		{
-			vtPlayer.push_back(player.createPlayer(Player::Charecter(result.resultInt[i])));
+			vtPlayer.push_back(player.createPlayer(Player::Character(result.resultInt[i])));
 			vtPlayer[i]->who = "P" + std::to_string(i + 1);
 			vtPlayer[i]->name = result.resultString[i + 1];
 			for (int j = i * 7; j < (i + 1) * 7; j++)
@@ -536,7 +536,7 @@ Result GameEngine::runPvpMode(Result result)
 	}
 	else
 	{
-		vtPlayer.push_back(player.createPlayer(Player::Charecter::bandit));
+		vtPlayer.push_back(player.createPlayer(Player::Character::bandit));
 		vtPlayer[0]->setPosition(sf::Vector2f(window.getSize().x / 2.0, window.getSize().y / 2.0));
 		vtPlayer[0]->setSize(sf::Vector2u(100, 100));
 		draw.add(vtPlayer[0]);
@@ -574,7 +574,7 @@ Result GameEngine::runPvpMode(Result result)
 	{
 		sf::RectangleShape *tmpRect = new sf::RectangleShape();
 		sf::Texture *tmpTexture = new sf::Texture();
-		tmpTexture->loadFromFile(SPRITE_PATH + "charecter\\" + std::to_string(vtPlayer[i]->charecter) + "bigPic.png");
+		tmpTexture->loadFromFile(SPRITE_PATH + "character\\" + std::to_string(vtPlayer[i]->character) + "bigPic.png");
 		tmpRect->setTexture(tmpTexture);
 		tmpRect->setSize(sf::Vector2f(200, 160));
 		tmpRect->setPosition(i*100.0f + 25.0f + i * 80, 50.0f);
@@ -708,7 +708,7 @@ Result GameEngine::runPvpMode(Result result)
 			{
 				pauseGame = false;
 				exit = true;
-				this->setScene(Scene::selectCharecter);
+				this->setScene(Scene::selectCharacter);
 			}
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 			{
@@ -1375,7 +1375,7 @@ Result GameEngine::runControlSetting(Result result)
 		return Result();
 }
 
-Result GameEngine::runSelectCharecter(Result result)
+Result GameEngine::runSelectCharacter(Result result)
 {
 	std::vector<Player*> vtPlayer;
 	Player player;
@@ -1387,7 +1387,7 @@ Result GameEngine::runSelectCharecter(Result result)
 	int totalPlayer = result.resultString.size() - 1;
 	for (int i = 0; i < 4; i++)
 	{
-		vtPlayer.push_back(player.createPlayer(Player::Charecter::bandit));
+		vtPlayer.push_back(player.createPlayer(Player::Character::bandit));
 		for (int j = i * 7; j < (i + 1) * 7; j++)
 		{
 			if (vtKeyCode[i * 7].joyEnable == 1)
@@ -1405,17 +1405,17 @@ Result GameEngine::runSelectCharecter(Result result)
 
 	}
 	
-	std::vector <std::vector<int>> vtCharecterMap;
+	std::vector <std::vector<int>> vtCharacterMap;
 	int count = 0;
 	for (int i = 0; i < 3; i++) 
 	{
-		vtCharecterMap.push_back(std::vector<int>());
+		vtCharacterMap.push_back(std::vector<int>());
 	}
-	for (int i = 0; i < vtCharecterMap.size(); i++)
+	for (int i = 0; i < vtCharacterMap.size(); i++)
 	{
 		for (int j = 0; j < 10; j++)
 		{
-			vtCharecterMap[i].push_back(count++);
+			vtCharacterMap[i].push_back(count++);
 		}
 	}
 	std::string name[5];
@@ -1440,7 +1440,7 @@ Result GameEngine::runSelectCharecter(Result result)
 	}
 	sf::Text title;
 	title.setFont(menuFont);
-	title.setString("Select Charecter");
+	title.setString("Select Character");
 	title.setCharacterSize(50);
 	title.setFillColor(sf::Color(99, 99, 26));
 	title.setPosition(350, 50);
@@ -1461,8 +1461,8 @@ Result GameEngine::runSelectCharecter(Result result)
 	sf::Texture smallTexture[31], bigTexture[31];
 	for (int i = 0; i < 30; i++)
 	{
-		smallTexture[i].loadFromFile(SPRITE_PATH+"charecter\\"+std::to_string(i)+"smallPic.png");
-		bigTexture[i].loadFromFile(SPRITE_PATH + "charecter\\"+std::to_string(i) + "bigPic.png");
+		smallTexture[i].loadFromFile(SPRITE_PATH+"character\\"+std::to_string(i)+"smallPic.png");
+		bigTexture[i].loadFromFile(SPRITE_PATH + "character\\"+std::to_string(i) + "bigPic.png");
 	}
 	
 	sf::Sprite bigShowP[5];
@@ -1484,7 +1484,7 @@ Result GameEngine::runSelectCharecter(Result result)
 		vtSmall.push_back(std::vector<sf::Sprite>());
 		for (int j = 0; j < 10; j++)
 		{
-			tmpSprite.setTexture(smallTexture[vtCharecterMap[i][j]]);
+			tmpSprite.setTexture(smallTexture[vtCharacterMap[i][j]]);
 			tmpSprite.setScale(2,2);
 			tmpSprite.setPosition(95*j+38, 400+100*i+50);	
 			vtSmall[i].push_back(tmpSprite);
@@ -1548,7 +1548,7 @@ Result GameEngine::runSelectCharecter(Result result)
 				{
 					tmpResult.resultString.push_back(name[i]);
 					tmpResult.resultVector2i.push_back(select[i]);
-					tmpResult.resultInt.push_back(vtCharecterMap[select[i].y][select[i].x]);
+					tmpResult.resultInt.push_back(vtCharacterMap[select[i].y][select[i].x]);
 				}
 				return tmpResult;
 			}
@@ -1607,7 +1607,7 @@ Result GameEngine::runSelectCharecter(Result result)
 					{
 						vtSmall[i][j].setColor(sf::Color(vtSmall[i][j].getColor().r, vtSmall[i][j].getColor().g, vtSmall[i][j].getColor().b, 255));
 						p[k].setPosition(vtSmall[i][j].getPosition().x, vtSmall[i][j].getPosition().y+k*25);
-						bigShowP[k].setTexture(bigTexture[vtCharecterMap[select[k].y][select[k].x]]);
+						bigShowP[k].setTexture(bigTexture[vtCharacterMap[select[k].y][select[k].x]]);
 						ckSelect = true;
 					}
 				}
@@ -1633,7 +1633,7 @@ Result GameEngine::runSelectCharecter(Result result)
 	{
 		tmpResult.resultString.push_back(name[i]);
 		tmpResult.resultVector2i.push_back(select[i]);
-		tmpResult.resultInt.push_back(vtCharecterMap[select[i].y][select[i].x]);
+		tmpResult.resultInt.push_back(vtCharacterMap[select[i].y][select[i].x]);
 	}
 	bgMusic.stop();
 	return tmpResult;
@@ -1885,7 +1885,7 @@ Result GameEngine::runSetPlayerName(Result result)
 						}
 						if (ck == false)
 						{
-							tmpResult.resultString.push_back("selectCharecter");
+							tmpResult.resultString.push_back("selectCharacter");
 							for (int i = 0; i < totalPlayer; i++)
 							{	
 								tmpResult.resultString.push_back(namePlayer[i].getString().toAnsiString());
@@ -1900,7 +1900,7 @@ Result GameEngine::runSetPlayerName(Result result)
 				
 		}
 	}	
-	tmpResult.resultString.push_back("selectCharecter");
+	tmpResult.resultString.push_back("selectCharacter");
 	tmpResult.resultString.push_back(namePlayer[0].getString().toAnsiString());
 	tmpResult.resultString.push_back(namePlayer[1].getString().toAnsiString());
 	bgMusic.stop();
