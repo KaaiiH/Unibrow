@@ -8,7 +8,6 @@ Draw::Draw()
 }
 
 
-
 void Draw::add(Animation *animation)
 {
 	content.push_back(animation->getSprite());
