@@ -63,7 +63,7 @@ void GameEngine::runMainMenu()
 	bool exit = false;
 	Draw draw;
 	draw.setWindow(&window);
-	Image *background = new Image("image\\bg\\main-menu-bg.jpg", sf::Vector2u(800, 600), sf::Vector2f(0, 0));
+	Image *background = new Image("image\\background\\main-menu.png", sf::Vector2u(800, 600), sf::Vector2f(0, 0));
 	draw.add(background);
 	sf::Font titleFont;
 	if (!titleFont.loadFromFile("font\\ARMY_RUST.ttf"))
@@ -72,7 +72,7 @@ void GameEngine::runMainMenu()
 	}
 	sf::Text *titleText = new sf::Text();
 	titleText->setFont(titleFont);
-	titleText->setString("Fight For Frank");
+	titleText->setString("Ghosting Apes");
 	titleText->setCharacterSize(70);
 	titleText->setFillColor(sf::Color::Black);
 	titleText->setPosition(180,50);

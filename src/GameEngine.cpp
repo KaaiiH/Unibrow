@@ -200,7 +200,7 @@ void GameEngine::setScene(Scene scene)
 Result GameEngine::runMainMenu(Result result)
 {
 	sf::Music bgMusic;
-	bgMusic.openFromFile("sound/bgm/main.ogg");
+	bgMusic.openFromFile("sound/main-menu.ogg");
 	bgMusic.setLoop(true);
 	bgMusic.setVolume(50);
 	bgMusic.play();
@@ -208,7 +208,7 @@ Result GameEngine::runMainMenu(Result result)
 	bool exit = false;
 	Draw draw;
 	draw.setWindow(&window);
-	Image *background = new Image("image\\bg\\main-menu-bg.jpg", sf::Vector2u(1000, 800), sf::Vector2f(0, 0));
+	Image *background = new Image("image\\background\\main-menu.png", sf::Vector2u(1000, 800), sf::Vector2f(0, 0));
 	draw.add(background);
 	sf::Font titleFont;
 	if (!titleFont.loadFromFile("font\\ARMY_RUST.ttf"))
@@ -217,7 +217,7 @@ Result GameEngine::runMainMenu(Result result)
 	}
 	sf::Text *titleText = new sf::Text();
 	titleText->setFont(titleFont);
-	titleText->setString("Fight For Frank");
+	titleText->setString("Ghosting Apes");
 	titleText->setCharacterSize(75);
 	titleText->setFillColor(sf::Color::Black);
 	titleText->setPosition(180+100, 50+80);
@@ -477,7 +477,7 @@ Result GameEngine::runMainMenu(Result result)
 Result GameEngine::runPvpMode(Result result)
 {
 	sf::Music bgMusic;
-	bgMusic.openFromFile("sound/bgm/stage1.ogg");
+	bgMusic.openFromFile("sound/background/stage1.ogg");
 	bgMusic.setLoop(true);
 	bgMusic.setVolume(20);
 	bgMusic.play();
@@ -792,7 +792,7 @@ Result GameEngine::runPvpMode(Result result)
 Result GameEngine::runHighScore(Result result)
 {
 	sf::Music bgMusic;
-	bgMusic.openFromFile("sound/bgm/main.ogg");
+	bgMusic.openFromFile("sound/main-menu.ogg");
 	bgMusic.setLoop(true);
 	bgMusic.setVolume(50);
 	bgMusic.play();
@@ -952,7 +952,7 @@ Result GameEngine::runHighScore(Result result)
 Result GameEngine::runControlSetting(Result result)
 {
 		sf::Music bgMusic;
-		bgMusic.openFromFile("sound/bgm/main.ogg");
+		bgMusic.openFromFile("sound/main-menu.ogg");
 		bgMusic.setLoop(true);
 		bgMusic.setVolume(50);
 		bgMusic.play();
@@ -1380,7 +1380,7 @@ Result GameEngine::runSelectCharacter(Result result)
 	std::vector<Player*> vtPlayer;
 	Player player;
 	sf::Music bgMusic;
-	bgMusic.openFromFile("sound/bgm/stage1.ogg");
+	bgMusic.openFromFile("sound/background/stage1.ogg");
 	bgMusic.setLoop(true);
 	bgMusic.setVolume(20);
 	bgMusic.play();
@@ -1644,7 +1644,7 @@ Result GameEngine::runSetPlayerName(Result result)
 	Result tmpResult;
 	bool exit = false;
 	sf::Music bgMusic;
-	bgMusic.openFromFile("sound/bgm/stage1.ogg");
+	bgMusic.openFromFile("sound/background/stage1.ogg");
 	bgMusic.setLoop(true);
 	bgMusic.setVolume(20);
 	bgMusic.play();
@@ -1913,7 +1913,7 @@ Result GameEngine::runSetTotalPlayer(Result result)
 	bool exit = false;
 	Draw draw;
 	sf::Music bgMusic;
-	bgMusic.openFromFile("sound/bgm/stage1.ogg");
+	bgMusic.openFromFile("sound/background/stage1.ogg");
 	bgMusic.setLoop(true);
 	bgMusic.setVolume(20);
 	bgMusic.play();
