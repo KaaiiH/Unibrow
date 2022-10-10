@@ -1,7 +1,6 @@
 #include"GameEngine.h"
 #include<SFML/Graphics.hpp>
 #include<time.h>
-#include<iostream>
 bool exitMain = false;
 int main()
 {
