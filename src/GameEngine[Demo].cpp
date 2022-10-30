@@ -63,7 +63,7 @@ void GameEngine::runMainMenu()
 	bool exit = false;
 	Draw draw;
 	draw.setWindow(&window);
-	Image *background = new Image("image\\bg\\main-menu.png", sf::Vector2u(800, 600), sf::Vector2f(0, 0));
+	Image *background = new Image("image\\bg\\main-menu-bg.jpg", sf::Vector2u(800, 600), sf::Vector2f(0, 0));
 	draw.add(background);
 	sf::Font titleFont;
 	if (!titleFont.loadFromFile("font\\ARMY_RUST.ttf"))
