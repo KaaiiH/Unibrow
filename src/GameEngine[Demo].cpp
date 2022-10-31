@@ -72,7 +72,7 @@ void GameEngine::runMainMenu()
 	}
 	sf::Text *titleText = new sf::Text();
 	titleText->setFont(titleFont);
-	titleText->setString("Ghosting Apes");
+	titleText->setString("Fight For Frank");
 	titleText->setCharacterSize(70);
 	titleText->setFillColor(sf::Color::Black);
 	titleText->setPosition(180,50);

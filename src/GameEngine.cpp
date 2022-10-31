@@ -210,6 +210,7 @@ Result GameEngine::runMainMenu(Result result)
 	draw.setWindow(&window);
 	Image *background = new Image("image\\bg\\main-menu-bg.jpg", sf::Vector2u(1000, 800), sf::Vector2f(0, 0));
 	draw.add(background);
+	//using SFML to create title font
 	sf::Font titleFont;
 	if (!titleFont.loadFromFile("font\\ARMY_RUST.ttf"))
 	{
@@ -217,13 +218,14 @@ Result GameEngine::runMainMenu(Result result)
 	}
 	sf::Text *titleText = new sf::Text();
 	titleText->setFont(titleFont);
-	titleText->setString("Ghosting Apes");
+	titleText->setString("Fight For Frank");
 	titleText->setCharacterSize(75);
 	titleText->setFillColor(sf::Color::Black);
 	titleText->setPosition(180+100, 50+80);
 	titleText->setOutlineColor(sf::Color(135, 36, 14));
 	titleText->setOutlineThickness(2.0f);
 	draw.add(titleText);
+	//changing menu font
 	sf::Font menuFont;
 	if (!menuFont.loadFromFile("font\\bangkok_regular_v1-0.ttf"))
 	{
@@ -263,20 +265,6 @@ Result GameEngine::runMainMenu(Result result)
 	menuText5->setPosition(365+120, 350+80);
 	draw.add(menuText5);
 
-	sf::Font developerFont;
-	if (!developerFont.loadFromFile("font\\FC_Lamoon_Bold_ver_1.00.ttf"))
-	{
-		std::cout << "Error load font\\FC_Lamoon_Bold_ver_1.00.ttf";
-	}
-	sf::Text *developerText = new sf::Text();
-	developerText->setFont(developerFont);
-	developerText->setString("Developed by Kiadtisak Buangam ID 61010103");
-	developerText->setCharacterSize(45);
-	developerText->setFillColor(sf::Color(128, 139, 150));
-	developerText->setPosition(80+100, 450+80);
-	developerText->setOutlineColor(sf::Color(0, 0, 0));
-	developerText->setOutlineThickness(2.0f);
-	draw.add(developerText);
 	sf::Event event;
 	sf::Mouse mouse;
 	sf::Clock clock;
