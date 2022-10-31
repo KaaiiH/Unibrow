@@ -17,18 +17,9 @@ Currently it can <ins>only be compiled on windows because that's what I built it
 * <a target="_blank"><img alt="Visual Studio" src="https://img.shields.io/badge/Visual%20Studio-%20-violet"/></a> 
 * <a target="_blank"><img alt="Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-%20-blue"/></a> 
 
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-
 ### Installation
 
 1. To play the Demo run the main.exe executable found in `src/main.exe`
-
 
 
 <!-- USAGE EXAMPLES -->
