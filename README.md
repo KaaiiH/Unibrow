@@ -12,8 +12,6 @@ Currently it can <ins>only be compiled on windows because that's what I built it
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 * <a target="_blank"><img alt="C++" src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white"/></a> 
 * <a target="_blank"><img alt="SFML" src="https://img.shields.io/badge/SFML-%20-green"/></a> 
 * <a target="_blank"><img alt="Visual Studio" src="https://img.shields.io/badge/Visual%20Studio-%20-violet"/></a> 
